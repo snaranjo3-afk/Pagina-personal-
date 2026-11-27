@@ -1,0 +1,1967 @@
+<!doctype html>
+<!--
+  ============================================================
+  PORTAFOLIO NARANJO'S — versión en un solo archivo HTML
+  ============================================================
+  Cómo editarlo:
+  1. Abre este archivo con cualquier editor de texto (VS Code,
+     Notepad++, Bloc de notas) o con un editor online.
+  2. Los textos están escritos directamente en el HTML.
+     Busca los comentarios que dicen "EDITA AQUÍ".
+  3. Las fotos son enlaces (atributo src). Si quieres usar tus
+     propias imágenes, sube la foto a internet (o ponla en la
+     misma carpeta) y cambia la dirección.
+  4. Para ver los cambios guarda el archivo y ábrelo en el navegador.
+  ============================================================
+-->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Naranjo's — Santiago Naranjo | Portafolio creativo</title>
+    <meta
+      name="description"
+      content="Portafolio de Santiago Naranjo: publicidad, marketing digital, creatividad y fotografía. Proyectos del semestre, servicios y contacto."
+    />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ========== 1. COLORES Y TIPOGRAFÍA (cámbialos aquí) ========== */
+      :root {
+        --bg: #0a0a0a;
+        --fg: #f5f5f5;
+        --muted: #a3a3a3;
+        --card: #121212;
+        --border: #292929;
+        --primary: #ff6600;
+
+        --font-display: "Archivo Black", "Archivo", sans-serif;
+        --font-body: "Inter", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+
+      /* ========== 2. BASE ========== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      ::selection {
+        background: var(--primary);
+        color: #0a0a0a;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      @media (min-width: 640px) {
+        .wrap {
+          padding: 0 40px;
+        }
+      }
+
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        color: var(--primary);
+      }
+
+      .display {
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        line-height: 0.95;
+        letter-spacing: -0.01em;
+      }
+
+      .orange {
+        color: var(--primary);
+      }
+
+      section {
+        border-top: 1px solid var(--border);
+      }
+
+      .section-pad {
+        padding: 80px 0;
+      }
+
+      @media (min-width: 1024px) {
+        .section-pad {
+          padding: 112px 0;
+        }
+      }
+
+      /* ========== 3. BARRA SUPERIOR ========== */
+      .progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background: var(--primary);
+        z-index: 60;
+      }
+
+      .site-header {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 50;
+        background: rgba(10, 10, 10, 0.82);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(41, 41, 41, 0.7);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 16px 24px;
+      }
+
+      @media (min-width: 640px) {
+        .header-inner {
+          padding: 16px 40px;
+        }
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+      }
+
+      .brand-name {
+        font-family: var(--font-display);
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+
+      .brand-sub {
+        display: none;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        line-height: 1.35;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--muted);
+      }
+
+      @media (min-width: 1024px) {
+        .brand-sub {
+          display: block;
+        }
+      }
+
+      .desktop-nav {
+        display: none;
+        align-items: center;
+        gap: 24px;
+      }
+
+      @media (min-width: 768px) {
+        .desktop-nav {
+          display: flex;
+        }
+      }
+
+      .nav-link {
+        position: relative;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        height: 1px;
+        width: 0;
+        background: var(--primary);
+        transition: width 0.3s;
+      }
+
+      .nav-link:hover {
+        color: var(--fg);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .btn-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--primary);
+        color: #0a0a0a;
+        padding: 10px 16px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        white-space: nowrap;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .btn-cta:hover {
+        background: var(--fg);
+        color: var(--bg);
+      }
+
+      .menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--fg);
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      @media (min-width: 768px) {
+        .menu-btn {
+          display: none;
+        }
+      }
+
+      /* Menú móvil */
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 55;
+        background: var(--bg);
+        display: none;
+        flex-direction: column;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .mobile-menu-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px;
+      }
+
+      .mobile-menu nav {
+        display: flex;
+        flex-direction: column;
+        padding: 24px 24px 0;
+      }
+
+      .mobile-menu nav a {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 0;
+        font-family: var(--font-display);
+        font-size: 28px;
+        text-transform: uppercase;
+      }
+
+      .mobile-menu nav a span {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--primary);
+      }
+
+      .mobile-menu-foot {
+        padding: 32px 24px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+      }
+
+      /* ========== 4. PORTADA ========== */
+      .hero {
+        border-top: none;
+        padding-top: 73px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 1024px) {
+        .hero-grid {
+          grid-template-columns: 1.02fr 0.98fr;
+          min-height: calc(100vh - 73px);
+        }
+      }
+
+      .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 48px;
+        padding: 56px 24px 48px;
+      }
+
+      @media (min-width: 640px) {
+        .hero-left {
+          padding: 56px 40px 48px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero-left {
+          padding: 64px 64px 64px 40px;
+        }
+      }
+
+      .hero h1 {
+        margin-top: 28px;
+        font-size: clamp(2.6rem, 7.4vw, 5.6rem);
+        line-height: 0.92;
+      }
+
+      .hero-lead {
+        margin-top: 28px;
+        max-width: 36ch;
+        font-size: 18px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px 32px;
+        margin-top: 36px;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--primary);
+        color: #0a0a0a;
+        padding: 16px 28px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .btn-primary:hover {
+        background: var(--fg);
+        color: var(--bg);
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 4px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        transition: color 0.2s, border-color 0.2s;
+      }
+
+      .btn-ghost:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .disciplines {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid var(--border);
+      }
+
+      .disciplines li {
+        padding: 16px 0;
+        border-color: var(--border);
+      }
+
+      .disciplines li:nth-child(odd) {
+        border-right: 1px solid var(--border);
+        padding-right: 16px;
+      }
+
+      .disciplines li:nth-child(even) {
+        padding-left: 16px;
+      }
+
+      .disciplines li:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .disciplines .num {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--primary);
+      }
+
+      .disciplines .label {
+        margin-top: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .disciplines .detail {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+      }
+
+      /* Columna visual de la portada */
+      .hero-visual {
+        position: relative;
+        min-height: 64vh;
+        overflow: hidden;
+        border-top: 1px solid var(--border);
+      }
+
+      @media (min-width: 1024px) {
+        .hero-visual {
+          min-height: 100%;
+          border-top: none;
+          border-left: 1px solid var(--border);
+        }
+      }
+
+      .hero-backdrop {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+      }
+
+      .hero-shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, var(--bg), rgba(10, 10, 10, 0.4), transparent);
+      }
+
+      @media (min-width: 1024px) {
+        .hero-shade {
+          background: linear-gradient(to right, var(--bg), rgba(10, 10, 10, 0.1), transparent);
+        }
+      }
+
+      .hero-lines {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -56px;
+        width: calc(100% + 56px);
+        opacity: 0.25;
+        background-image: repeating-linear-gradient(
+          90deg,
+          var(--primary) 0px,
+          var(--primary) 2px,
+          transparent 2px,
+          transparent 14px
+        );
+        animation: drift 16s linear infinite;
+      }
+
+      @keyframes drift {
+        from {
+          transform: translate3d(-56px, 0, 0);
+        }
+        to {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .hero-portrait {
+        position: absolute;
+        right: 24px;
+        bottom: 32px;
+        width: 66%;
+        max-width: 340px;
+      }
+
+      @media (min-width: 640px) {
+        .hero-portrait {
+          right: 40px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero-portrait {
+          right: 48px;
+          bottom: 48px;
+        }
+      }
+
+      .hero-portrait-frame {
+        position: relative;
+        overflow: hidden;
+        background: var(--card);
+        clip-path: polygon(1% 4%, 97% 0%, 100% 93%, 92% 100%, 8% 97%, 0% 46%);
+      }
+
+      .hero-portrait img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      .hero-portrait-shadow {
+        position: absolute;
+        inset: 0;
+        transform: translate(12px, 12px);
+        background: var(--primary);
+      }
+
+      .hero-portrait-caption {
+        position: relative;
+        margin-top: 12px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--muted);
+      }
+
+      /* ========== 5. SOBRE MÍ ========== */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      @media (min-width: 1024px) {
+        .about-grid {
+          grid-template-columns: 0.85fr 1.15fr;
+          gap: 64px;
+        }
+      }
+
+      .about-photo {
+        position: relative;
+      }
+
+      .about-photo-frame {
+        position: absolute;
+        inset: 0;
+        transform: translate(12px, 12px);
+        border: 1px solid var(--primary);
+      }
+
+      .about-photo img {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      .about-photo-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--muted);
+      }
+
+      .about h2 {
+        margin-top: 24px;
+        font-size: clamp(2.1rem, 5vw, 3.8rem);
+      }
+
+      .about-text {
+        margin-top: 32px;
+        display: grid;
+        gap: 24px;
+        font-size: 18px;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+
+      .about-goal {
+        margin-top: 40px;
+        border-top: 1px solid var(--border);
+        padding-top: 32px;
+      }
+
+      .about-goal h3 {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        color: var(--primary);
+      }
+
+      .about-goal p {
+        margin-top: 16px;
+        max-width: 58ch;
+        font-size: 16px;
+        line-height: 1.7;
+        color: rgba(245, 245, 245, 0.8);
+      }
+
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 40px;
+        border-top: 1px solid var(--border);
+      }
+
+      .facts > div {
+        padding: 24px 0;
+      }
+
+      .facts > div + div {
+        border-left: 1px solid var(--border);
+        padding-left: 16px;
+      }
+
+      .facts > div:not(:last-child) {
+        padding-right: 16px;
+      }
+
+      .facts dt {
+        font-family: var(--font-display);
+        font-size: 30px;
+      }
+
+      @media (min-width: 640px) {
+        .facts dt {
+          font-size: 36px;
+        }
+      }
+
+      .facts dd {
+        margin-top: 8px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        line-height: 1.3;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+      }
+
+      /* ========== 6. TÍTULOS DE SECCIÓN ========== */
+      .section-head {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      @media (min-width: 768px) {
+        .section-head {
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: space-between;
+        }
+      }
+
+      .section-head h2 {
+        margin-top: 20px;
+        font-size: clamp(2rem, 5vw, 3.8rem);
+      }
+
+      .section-head p.intro {
+        max-width: 36ch;
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      /* ========== 7. PROYECTOS ========== */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px 24px;
+        margin-top: 56px;
+      }
+
+      @media (min-width: 768px) {
+        .projects-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .project-media {
+        position: relative;
+        overflow: hidden;
+        background: var(--card);
+      }
+
+      .project-media img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+      }
+
+      .project:hover .project-media img {
+        transform: scale(1.04);
+      }
+
+      .project-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid transparent;
+        transition: border-color 0.3s;
+      }
+
+      .project:hover .project-media::after {
+        border-color: var(--primary);
+      }
+
+      .project-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        display: inline-flex;
+        gap: 8px;
+        background: rgba(10, 10, 10, 0.85);
+        padding: 6px 12px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+      }
+
+      .project-badge span {
+        color: var(--primary);
+      }
+
+      .project-body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 20px;
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+      }
+
+      .project-body h3 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        line-height: 1.15;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+
+      .project:hover .project-body h3 {
+        color: var(--primary);
+      }
+
+      @media (min-width: 640px) {
+        .project-body h3 {
+          font-size: 24px;
+        }
+      }
+
+      .project-body p {
+        margin-top: 12px;
+        max-width: 52ch;
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .tags li {
+        border: 1px solid var(--border);
+        padding: 4px 10px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+      }
+
+      .project-year {
+        flex-shrink: 0;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+      }
+
+      /* ========== 8. SERVICIOS ========== */
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      @media (min-width: 1024px) {
+        .services-grid {
+          grid-template-columns: 0.6fr 1.4fr;
+          gap: 64px;
+        }
+      }
+
+      .services-intro h2 {
+        margin-top: 20px;
+        font-size: clamp(2rem, 4.6vw, 3.4rem);
+      }
+
+      .services-intro p {
+        margin-top: 24px;
+        max-width: 30ch;
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .services-list {
+        border-top: 1px solid var(--border);
+      }
+
+      .services-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+        padding: 28px 0;
+        transition: border-color 0.2s;
+      }
+
+      .services-list li:hover {
+        border-color: var(--primary);
+      }
+
+      .services-list .num {
+        margin-top: 4px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--primary);
+      }
+
+      .services-list h3 {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.4;
+        transition: color 0.2s;
+      }
+
+      @media (min-width: 640px) {
+        .services-list h3 {
+          font-size: 20px;
+        }
+      }
+
+      .services-list li:hover h3 {
+        color: var(--primary);
+      }
+
+      .services-list p {
+        margin-top: 8px;
+        max-width: 52ch;
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .services-cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 40px;
+        background: var(--primary);
+        color: #0a0a0a;
+        padding: 24px 28px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .services-cta:hover {
+        background: var(--fg);
+        color: var(--bg);
+      }
+
+      /* ========== 9. HABILIDADES ========== */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px 40px;
+        margin-top: 56px;
+      }
+
+      @media (min-width: 640px) {
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .skills-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .skill-group {
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+      }
+
+      .skill-group h3 {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+      }
+
+      .skill-group ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .skill-group li {
+        border: 1px solid var(--border);
+        padding: 6px 12px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+
+      .skill-group li:hover {
+        border-color: var(--primary);
+        background: var(--primary);
+        color: #0a0a0a;
+      }
+
+      /* ========== 10. CONTACTO ========== */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      @media (min-width: 1024px) {
+        .contact-grid {
+          grid-template-columns: 0.85fr 1.15fr;
+          gap: 64px;
+        }
+      }
+
+      .contact h2 {
+        margin-top: 20px;
+        font-size: clamp(2.1rem, 5vw, 3.8rem);
+      }
+
+      .contact-lead {
+        margin-top: 24px;
+        max-width: 34ch;
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .contact-data {
+        margin-top: 40px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .contact-data li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 14px;
+        color: rgba(245, 245, 245, 0.85);
+      }
+
+      .contact-data .dot {
+        margin-top: 7px;
+        width: 6px;
+        height: 6px;
+        flex-shrink: 0;
+        background: var(--primary);
+      }
+
+      .contact-data a:hover {
+        color: var(--primary);
+      }
+
+      .availability {
+        margin-top: 40px;
+        border-top: 1px solid var(--border);
+        padding-top: 24px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+      }
+
+      .contact-card {
+        border: 1px solid var(--border);
+        background: var(--card);
+        padding: 24px;
+      }
+
+      @media (min-width: 640px) {
+        .contact-card {
+          padding: 36px;
+        }
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      @media (min-width: 640px) {
+        .form-row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .field {
+        display: block;
+        margin-top: 24px;
+      }
+
+      .form-row .field {
+        margin-top: 0;
+      }
+
+      .field span {
+        font-family: var(--font-mono);
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--muted);
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        margin-top: 8px;
+        border: none;
+        border-bottom: 1px solid var(--border);
+        background: transparent;
+        padding: 12px 0;
+        font-family: var(--font-body);
+        font-size: 14px;
+        color: var(--fg);
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .field textarea {
+        resize: none;
+        line-height: 1.6;
+      }
+
+      .field select option {
+        background: var(--card);
+        color: var(--fg);
+      }
+
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: rgba(163, 163, 163, 0.6);
+      }
+
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--primary);
+      }
+
+      .form-submit {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+        margin-top: 32px;
+        border: none;
+        background: var(--primary);
+        color: #0a0a0a;
+        padding: 16px 24px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .form-submit:hover {
+        background: var(--fg);
+        color: var(--bg);
+      }
+
+      .form-note {
+        margin-top: 16px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        line-height: 1.6;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+      }
+
+      /* ========== 11. PIE DE PÁGINA ========== */
+      .site-footer {
+        border-top: 1px solid var(--border);
+        padding: 64px 0;
+      }
+
+      @media (min-width: 1024px) {
+        .site-footer {
+          padding: 80px 0;
+        }
+      }
+
+      .footer-mail {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 4px 16px;
+        margin-top: 24px;
+        font-family: var(--font-display);
+        font-size: clamp(1.05rem, 4.4vw, 3.6rem);
+        text-transform: uppercase;
+        line-height: 0.95;
+        overflow-wrap: anywhere;
+        transition: color 0.2s;
+      }
+
+      .footer-mail:hover {
+        color: var(--primary);
+      }
+
+      .footer-cols {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 56px;
+        border-top: 1px solid var(--border);
+        padding-top: 40px;
+      }
+
+      @media (min-width: 640px) {
+        .footer-cols {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .footer-cols h4 {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--muted);
+      }
+
+      .footer-cols p,
+      .footer-cols a {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .footer-cols a:hover {
+        color: var(--primary);
+      }
+
+      .footer-cols .footer-brand {
+        margin-top: 16px;
+        font-family: var(--font-display);
+        font-size: 20px;
+        text-transform: uppercase;
+        color: var(--fg);
+      }
+
+      .footer-cols ul {
+        display: grid;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .footer-cols .footer-brand + p {
+        margin-top: 8px;
+      }
+
+      .footer-cols > div > p:not(.footer-brand) {
+        margin-top: 16px;
+      }
+
+      .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 48px;
+        border-top: 1px solid var(--border);
+        padding-top: 24px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+      }
+
+      @media (min-width: 640px) {
+        .footer-bottom {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .footer-bottom a:hover {
+        color: var(--primary);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .hero-lines {
+          animation: none;
+        }
+        .project-media img {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="progress" id="progress"></div>
+
+    <!-- ==================== BARRA SUPERIOR ==================== -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#inicio" class="brand">
+          <span class="brand-name">Naranjo<span class="orange">'s</span></span>
+          <!-- EDITA AQUÍ: tu nombre y especialidades -->
+          <span class="brand-sub">
+            Santiago Naranjo<br />
+            Creatividad / Digital / Anuncios
+          </span>
+        </a>
+
+        <nav class="desktop-nav">
+          <a class="nav-link" href="#servicios">Servicios</a>
+          <a class="nav-link" href="#portafolio">Portafolio</a>
+          <a class="nav-link" href="#sobre-mi">Sobre mí</a>
+          <a class="nav-link" href="#contacto">Contacto</a>
+          <a class="btn-cta" href="#contacto">Hablemos ↗</a>
+        </nav>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-top">
+        <span class="brand-name">Naranjo<span class="orange">'s</span></span>
+        <button class="menu-btn" id="closeMenuBtn" aria-label="Cerrar menú">✕</button>
+      </div>
+      <nav>
+        <a href="#servicios">Servicios <span>01</span></a>
+        <a href="#portafolio">Portafolio <span>02</span></a>
+        <a href="#sobre-mi">Sobre mí <span>03</span></a>
+        <a href="#contacto">Contacto <span>04</span></a>
+      </nav>
+      <div class="mobile-menu-foot">Bucaramanga, Colombia</div>
+    </div>
+
+    <main>
+      <!-- ==================== 1. PORTADA ==================== -->
+      <section class="hero" id="inicio">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div>
+              <!-- EDITA AQUÍ: frase de presentación -->
+              <p class="eyebrow">Santiago Naranjo — Creatividad / Digital / Anuncios</p>
+
+              <!-- EDITA AQUÍ: título principal -->
+              <h1 class="display">
+                No solo es ver<br />
+                <span class="orange">es recordar</span>
+              </h1>
+
+              <p class="hero-lead">
+                Creo conceptos que convierten marcas en experiencias. Publicidad, contenido y
+                fotografía con una idea clara detrás.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn-primary" href="#portafolio">Ver portafolio ↘</a>
+                <a class="btn-ghost" href="#contacto">Hablemos de tu proyecto ↗</a>
+              </div>
+            </div>
+
+            <!-- EDITA AQUÍ: tus disciplinas (4 bloques) -->
+            <ul class="disciplines">
+              <li>
+                <span class="num">01</span>
+                <p class="label">Publicidad</p>
+                <p class="detail">Concepto y campaña</p>
+              </li>
+              <li>
+                <span class="num">02</span>
+                <p class="label">Marketing digital</p>
+                <p class="detail">Estrategia y contenido</p>
+              </li>
+              <li>
+                <span class="num">03</span>
+                <p class="label">Creatividad</p>
+                <p class="detail">Ideas que se recuerdan</p>
+              </li>
+              <li>
+                <span class="num">04</span>
+                <p class="label">Fotografía</p>
+                <p class="detail">Dirección y producción</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <!-- EDITA AQUÍ: imagen de fondo de la portada -->
+            <img
+              class="hero-backdrop"
+              src="https://media.base44.com/images/public/6b06f49262602dab1aeb8ad1/9eb2b5ae52746b05c42d9779fdbed303_generated_c416fb12.png"
+              alt=""
+            />
+            <div class="hero-shade"></div>
+            <div class="hero-lines" aria-hidden="true"></div>
+
+            <div class="hero-portrait">
+              <div class="hero-portrait-shadow" aria-hidden="true"></div>
+              <div class="hero-portrait-frame">
+                <!-- EDITA AQUÍ: tu foto de retrato -->
+                <img
+                  src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/6be6ddb279d3678147f1908b6641ba49_retrato-santiago-naranjo.jpg"
+                  alt="Retrato de Santiago Naranjo"
+                />
+              </div>
+              <p class="hero-portrait-caption">Campaña personal — 2026</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 2. SOBRE MÍ ==================== -->
+      <section id="sobre-mi" class="section-pad">
+        <div class="wrap about-grid about">
+          <div>
+            <div class="about-photo">
+              <div class="about-photo-frame" aria-hidden="true"></div>
+              <!-- EDITA AQUÍ: foto de la sección sobre mí -->
+              <img
+                src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/6be6ddb279d3678147f1908b6641ba49_retrato-santiago-naranjo.jpg"
+                alt="Retrato de Santiago Naranjo"
+              />
+            </div>
+            <div class="about-photo-meta">
+              <span>Santiago Naranjo</span>
+              <span>Bucaramanga, CO</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="eyebrow">02 — Sobre mí</p>
+            <h2 class="display">About <span class="orange">Naranjo's</span></h2>
+
+            <div class="about-text">
+              <!-- EDITA AQUÍ: tu biografía -->
+              <p>
+                NARANJO'S es una marca personal que une la publicidad, el marketing digital y la
+                comunicación visual. Nace de mi interés por la creatividad, el diseño y la cultura
+                digital, con el propósito de transformar ideas en propuestas visuales y estrategias
+                que conecten con las personas.
+              </p>
+              <p>
+                Estudio y trabajo en la intersección entre la idea y su ejecución: pienso el
+                concepto, defino la dirección visual y produzco las piezas. Me interesa el trabajo
+                que se entiende rápido, se recuerda y se puede defender con argumentos.
+              </p>
+            </div>
+
+            <div class="about-goal">
+              <h3>Objetivo</h3>
+              <p>
+                Presentar mi perfil profesional, dar a conocer mis servicios, mostrar mis proyectos
+                creativos y facilitar el contacto con posibles clientes.
+              </p>
+            </div>
+
+            <dl class="facts">
+              <div>
+                <dt>6</dt>
+                <dd>Proyectos del semestre</dd>
+              </div>
+              <div>
+                <dt>4</dt>
+                <dd>Disciplinas</dd>
+              </div>
+              <div>
+                <dt>2026</dt>
+                <dd>Portafolio activo</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 3. PORTAFOLIO ==================== -->
+      <section id="portafolio" class="section-pad">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">03 — Portafolio</p>
+              <h2 class="display">Mis <span class="orange">proyectos</span></h2>
+            </div>
+            <p class="intro">
+              Trabajos desarrollados durante el semestre: campañas, fotografía, identidad y
+              contenido para redes.
+            </p>
+          </div>
+
+          <!-- EDITA AQUÍ: cada <article> es un proyecto.
+               Cambia la imagen (src), el número, la categoría, el título,
+               la descripción, las etiquetas y el año. -->
+          <div class="projects-grid">
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/17d27700c710b9c85b8e0aeb436d381c_proyecto-01.jpg"
+                  alt="Serie retrato — Contraste"
+                />
+                <div class="project-badge"><span>01</span> Retrato editorial</div>
+              </div>
+              <div class="project-body">
+                <div>
+                  <h3>Serie retrato — Contraste</h3>
+                  <p>
+                    Serie de retrato en blanco y negro con luz lateral dura. El fondo se degrada
+                    para que la atención quede en el gesto y en la textura de la piel.
+                  </p>
+                  <ul class="tags">
+                    <li>Retrato</li>
+                    <li>Luz dura</li>
+                    <li>Blanco y negro</li>
+                  </ul>
+                </div>
+                <span class="project-year">2026</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/648e06d7a7d196f2c5371502ae4d7bc7_proyecto-02.jpg"
+                  alt="Retrato — Mirada alta"
+                />
+                <div class="project-badge"><span>02</span> Retrato</div>
+              </div>
+              <div class="project-body">
+                <div>
+                  <h3>Retrato — Mirada alta</h3>
+                  <p>
+                    Retrato de estudio con luz direccional y fondo neutro. Busqué una pose
+                    ascendente y aire a la derecha para que la imagen respirara.
+                  </p>
+                  <ul class="tags">
+                    <li>Retrato</li>
+                    <li>Estudio</li>
+                    <li>Dirección de pose</li>
+                  </ul>
+                </div>
+                <span class="project-year">2026</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/d5c350c46644ef29a995efa096c40b3a_proyecto-03.jpg"
+                  alt="Retrato — Sombra suave"
+                />
+                <div class="project-badge"><span>03</span> Retrato</div>
+              </div>
+              <div class="project-body">
+                <div>
+                  <h3>Retrato — Sombra suave</h3>
+                  <p>
+                    Tercera pieza de la serie en blanco y negro. Contraste alto, fondo en degradado
+                    y un encuadre cerrado que sostiene la mirada.
+                  </p>
+                  <ul class="tags">
+                    <li>Retrato</li>
+                    <li>Contraluz</li>
+                    <li>Retoque</li>
+                  </ul>
+                </div>
+                <span class="project-year">2026</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/9243486653ec116e0272f8e6b531b2f9_proyecto-04.jpg"
+                  alt="Editorial de moda — Silla Vacía"
+                />
+                <div class="project-badge"><span>04</span> Editorial de moda</div>
+              </div>
+              <div class="project-body">
+                <div>
+                  <h3>Editorial de moda — Silla Vacía</h3>
+                  <p>
+                    Editorial en estudio con fondo beige y una silla de madera como único elemento.
+                    Ropa urbana, pose relajada y luz frontal suave.
+                  </p>
+                  <ul class="tags">
+                    <li>Moda</li>
+                    <li>Editorial</li>
+                    <li>Producción</li>
+                  </ul>
+                </div>
+                <span class="project-year">2026</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/c807f1de98cb3c96ac33c1db4b9515ac_proyecto-05.jpg"
+                  alt="Sesión de moda — Live Love"
+                />
+                <div class="project-badge"><span>05</span> Editorial de moda</div>
+              </div>
+              <div class="project-body">
+                <div>
+                  <h3>Sesión de moda — Live Love</h3>
+                  <p>
+                    Sesión de moda con estilismo urbano: bandana roja, camiseta gráfica y denim. Luz
+                    suave de estudio y paleta cálida sobre el fondo.
+                  </p>
+                  <ul class="tags">
+                    <li>Moda</li>
+                    <li>Estilismo</li>
+                    <li>Dirección de arte</li>
+                  </ul>
+                </div>
+                <span class="project-year">2026</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="https://base44.app/api/apps/6b06f49262602dab1aeb8ad1/files/mp/public/6b06f49262602dab1aeb8ad1/4f9d7f2d6d3685fc06978564b2c04663_proyecto-06.jpg"
+                  alt="Dueto — Salsa"
+                />
+                <div class="project-badge"><span>06</span> Editorial de moda</div>
+              </div>
+              <div class="project-body">
+                <div>
+                  <h3>Dueto — Salsa</h3>
+                  <p>
+                    Retrato de dos personas en el mismo set, con una silla y una composición en
+                    diagonal. La idea era que la imagen se sintiera en movimiento.
+                  </p>
+                  <ul class="tags">
+                    <li>Moda</li>
+                    <li>Dueto</li>
+                    <li>Composición</li>
+                  </ul>
+                </div>
+                <span class="project-year">2026</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 4. SERVICIOS ==================== -->
+      <section id="servicios" class="section-pad">
+        <div class="wrap services-grid">
+          <div class="services-intro">
+            <p class="eyebrow">04 — Servicios</p>
+            <h2 class="display">N's <span class="orange">|</span> Servicios</h2>
+            <p>
+              Trabajo por proyecto o por acompañamiento mensual. Cada servicio empieza con una
+              conversación sobre el objetivo, no con una plantilla.
+            </p>
+          </div>
+
+          <div>
+            <!-- EDITA AQUÍ: tus servicios (cada <li> es uno) -->
+            <ul class="services-list">
+              <li>
+                <span class="num">01</span>
+                <div>
+                  <h3>Conceptualización de ideas y campañas publicitarias</h3>
+                  <p>
+                    Del brief al concepto: una idea central que sostiene todas las piezas de la
+                    campaña.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="num">02</span>
+                <div>
+                  <h3>Diseño de piezas gráficas digitales</h3>
+                  <p>
+                    Piezas para feed, stories, exterior y medios digitales con una línea visual
+                    consistente.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="num">03</span>
+                <div>
+                  <h3>Creación de contenido para redes sociales</h3>
+                  <p>
+                    Parrillas, guiones y series de contenido pensadas para sostener una marca en el
+                    tiempo.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="num">04</span>
+                <div>
+                  <h3>Estrategias de comunicación y marketing digital</h3>
+                  <p>
+                    Mensaje, público y canales alineados para que la inversión tenga un objetivo
+                    claro.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="num">05</span>
+                <div>
+                  <h3>Desarrollo de propuestas de identidad visual</h3>
+                  <p>
+                    Marca, paleta, tipografía y aplicaciones para que la identidad funcione en
+                    cualquier soporte.
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <a class="services-cta" href="#contacto">
+              <span>Cuéntame sobre tu proyecto</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 5. HABILIDADES ==================== -->
+      <section id="habilidades" class="section-pad">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">05 — Habilidades</p>
+              <h2 class="display">Con qué <span class="orange">trabajo</span></h2>
+            </div>
+            <p class="intro">
+              Herramientas y capacidades que uso para llevar una idea desde el concepto hasta la
+              pieza final.
+            </p>
+          </div>
+
+          <!-- EDITA AQUÍ: tus grupos de habilidades -->
+          <div class="skills-grid">
+            <div class="skill-group">
+              <h3>Estrategia</h3>
+              <ul>
+                <li>Investigación de marca</li>
+                <li>Insight de audiencia</li>
+                <li>Planeación de campaña</li>
+                <li>Copy estratégico</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h3>Diseño</h3>
+              <ul>
+                <li>Dirección de arte</li>
+                <li>Identidad visual</li>
+                <li>Diagramación editorial</li>
+                <li>Empaque</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h3>Contenido</h3>
+              <ul>
+                <li>Fotografía</li>
+                <li>Producción de set</li>
+                <li>Guiones cortos</li>
+                <li>Retoque digital</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h3>Herramientas</h3>
+              <ul>
+                <li>Adobe Photoshop</li>
+                <li>Illustrator</li>
+                <li>InDesign</li>
+                <li>Figma</li>
+                <li>Premiere Pro</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 6. CONTACTO ==================== -->
+      <section id="contacto" class="section-pad">
+        <div class="wrap contact-grid contact">
+          <div>
+            <p class="eyebrow">06 — Contacto</p>
+            <h2 class="display">Cuéntame sobre <span class="orange">tu proyecto</span></h2>
+            <p class="contact-lead">
+              Escríbeme con el objetivo, el plazo y el tipo de pieza que necesitas. Respondo en menos
+              de 48 horas hábiles.
+            </p>
+
+            <ul class="contact-data">
+              <li>
+                <span class="dot" aria-hidden="true"></span>
+                <!-- EDITA AQUÍ: tu correo (cámbialo también en el formulario de abajo) -->
+                <a href="mailto:santiagonc.05@gmail.com">santiagonc.05@gmail.com</a>
+              </li>
+              <li>
+                <span class="dot" aria-hidden="true"></span>
+                <span>Bucaramanga, Colombia — proyectos presenciales y remotos</span>
+              </li>
+            </ul>
+
+            <div class="availability">Disponible para nuevos proyectos</div>
+          </div>
+
+          <div class="contact-card">
+            <!--
+              Este formulario abre el correo del visitante con el mensaje ya escrito
+              (no necesita servidor). Si más adelante lo publicas en un servicio con
+              backend, puedes cambiar el envío.
+            -->
+            <form id="contactForm">
+              <div class="form-row">
+                <label class="field">
+                  <span>Nombre</span>
+                  <input type="text" name="nombre" placeholder="Tu nombre" required />
+                </label>
+                <label class="field">
+                  <span>Correo</span>
+                  <input type="email" name="correo" placeholder="tu@correo.com" required />
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Tipo de proyecto</span>
+                <select name="tipo">
+                  <option>Campaña publicitaria</option>
+                  <option>Identidad visual</option>
+                  <option>Contenido para redes</option>
+                  <option>Fotografía</option>
+                  <option>Otro</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Mensaje</span>
+                <textarea
+                  name="mensaje"
+                  rows="5"
+                  placeholder="Cuéntame qué necesitas, para cuándo y qué esperas lograr."
+                  required
+                ></textarea>
+              </label>
+
+              <button class="form-submit" type="submit">
+                <span>Enviar mensaje</span>
+                <span>→</span>
+              </button>
+              <p class="form-note">Se abrirá tu correo con el mensaje listo para enviar.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== PIE DE PÁGINA ==================== -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="eyebrow">Trabajemos juntos</p>
+        <a class="footer-mail" href="mailto:santiagonc.05@gmail.com">
+          santiagonc.05@gmail.com ↗
+        </a>
+
+        <div class="footer-cols">
+          <div>
+            <h4>Marca personal</h4>
+            <p class="footer-brand">Naranjo<span class="orange">'s</span></p>
+            <p>
+              Santiago Naranjo<br />
+              Creatividad / Digital / Anuncios
+            </p>
+          </div>
+
+          <div>
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#portafolio">Portafolio</a></li>
+              <li><a href="#sobre-mi">Sobre mí</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Ubicación</h4>
+            <p>
+              Bucaramanga, Colombia<br />
+              Disponible para proyectos remotos
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© <span id="year">2026</span> Naranjo's. Todos los derechos reservados.</span>
+          <a href="#inicio">Volver arriba ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Año automático en el pie de página
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Menú móvil
+      const menu = document.getElementById("mobileMenu");
+      document.getElementById("menuBtn").addEventListener("click", () => {
+        menu.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+      document.getElementById("closeMenuBtn").addEventListener("click", () => {
+        menu.classList.remove("open");
+        document.body.style.overflow = "";
+      });
+      menu.querySelectorAll("nav a").forEach((link) =>
+        link.addEventListener("click", () => {
+          menu.classList.remove("open");
+          document.body.style.overflow = "";
+        })
+      );
+
+      // Barra de progreso al hacer scroll
+      const progress = document.getElementById("progress");
+      window.addEventListener("scroll", () => {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + "%";
+      });
+
+      // Formulario: abre el correo con el mensaje escrito
+      const CONTACT_EMAIL = "santiagonc.05@gmail.com"; // EDITA AQUÍ si cambias de correo
+      document.getElementById("contactForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const subject = "Nuevo proyecto — " + data.get("tipo");
+        const body =
+          "Nombre: " +
+          data.get("nombre") +
+          "\nCorreo: " +
+          data.get("correo") +
+          "\nTipo de proyecto: " +
+          data.get("tipo") +
+          "\n\n" +
+          data.get("mensaje");
+        window.location.href =
+          "mailto:" +
+          CONTACT_EMAIL +
+          "?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          encodeURIComponent(body);
+      });
+    </script>
+  </body>
+</html>
